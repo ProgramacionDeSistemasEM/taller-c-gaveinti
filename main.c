@@ -75,14 +75,14 @@ int main(int argc, char **argv){
 
 
 float calcular_ICM(float peso, float altura){
-	return peso / (altura * altura);
+	return peso/(altura * altura);
 
 }
 
 float promedio(float *arreglo, int n){
 	float prom;
 	for(int i = 0; i < n; i ++){
-		prom += arreglo[i];
+		prom = prom + arreglo[i];
 	}
 	return prom/n;
 }
