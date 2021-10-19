@@ -20,7 +20,10 @@ int main(int argc, char **argv){
 		switch(c){
 			case 'p':
 				elementos = atoi(optarg);
-			
+				if(elementos <= 0){
+					printf("Numero de personas invalido \n");
+					exit(1);
+				}	
 				
 				
 
@@ -44,9 +47,17 @@ int main(int argc, char **argv){
 
 		printf("Peso:");
 		scanf("%f", &peso);
+		if(peso < 0){
+			printf("Numero invalido \n");
+			exit(1);
+		}
 
 		printf("Altura:");
 		scanf("%f", &altura);
+		if(altura < 0){
+			printf("Numero invalido \n");
+			exit(1);
+		}
 
 		float icm = calcular_ICM(peso, altura);
 		arr[i] = icm;
