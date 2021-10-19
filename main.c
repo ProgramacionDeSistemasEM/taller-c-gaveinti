@@ -3,6 +3,9 @@
 #include <unistd.h>
 
 float calcular_ICM(float peso, float altura);
+float promedio(float *arreglo, int n);
+float maximo(float *arreglo, int n);
+
 
 int main(int argc, char **argv){
 	
@@ -17,22 +20,10 @@ int main(int argc, char **argv){
 		switch(c){
 			case 'p':
 				elementos = atoi(optarg);
-				int count = 0;
-				float arr[elements] = {0};
+			
+				
+				
 
-				for(int i = 0; i < elementos; i ++){{
-					float peso;
-					float altura;
-
-					printf("Peso:");
-					scantf("%.2f", &peso);
-					
-					print("Altura:");
-					scanf("%.2f", &altura);
-
-					int icm = calcular_ICM(peso, altura);
-
-				}
 				break;
 			default:
 				printf("Argumento invalido\n");
@@ -44,9 +35,25 @@ int main(int argc, char **argv){
 	//Puede declarar más variables si lo necesita.
 	float sum = 0.0f;
 	float max_imc = 0.0f;
-	
+
+	float arr[elementos];
+
+	for(int i = 0; i < elementos; i ++){
+		float peso;
+		float altura;
+
+		printf("Peso:");
+		scanf("%f", &peso);
+
+		printf("Altura:");
+		scanf("%f", &altura);
+
+		float icm = calcular_ICM(peso, altura);
+		arr[i] = icm;
+	}	
 	//Comentario de prueba
-	
+	sum = promedio(arr, elementos);
+	max_imc = maximo(arr, elementos);
 	
 	//No modifique estas lineas
 	//Guarde los resultados en las 
@@ -59,4 +66,22 @@ int main(int argc, char **argv){
 float calcular_ICM(float peso, float altura){
 	return peso / (altura * altura);
 
+}
+
+float promedio(float *arreglo, int n){
+	float prom;
+	for(int i = 0; i < n; i ++){
+		prom += arreglo[i];
+	}
+	return prom/n;
+}
+
+float maximo(float *arreglo, int n){
+	float maximo = arreglo[0];
+	for(int i = 1 ; i < n; i ++){
+		if(maximo < arreglo[i]){
+			maximo = arreglo[i];
+		}	
+	}
+	return maximo;
 }
